@@ -1,0 +1,59 @@
+/*AGT.1*/   select SUM(min_salary) as Total_Sum_Minimum_Salary from jobs;
+            select SUM(max_salary) as Total_Sum_Maximum_Salary from jobs;
+
+            select min(min_salary) as Minimun_Salary from jobs;
+            select max(max_salary) as Maximun_Salary from jobs;
+
+            select AVG(min_salary) as Minimum_Average_Salary from jobs;
+            select AVG (max_salary) as Maximum_Average_Salary from jobs;
+
+
+/*AGT.2*/   select department_id,SUM(salary) as Total_Salary from employees
+            group by department_id;
+
+/*AGT.3*/   select department_id,count(department_id) as Total_Number_of_Employees_in_each_Department from employees
+            group by department_id; 
+
+/*AGT.4*/   select department_id,SUM(salary) as Total_Salary from employees
+            group by department_id;
+
+/*AGT.5*/   select first_name+'  '+last_name from employees 
+            where comission is null;
+
+/*AGT.6*/   select first_name,salary,
+            case
+            when comission>0 then
+            CAST(comission as varchar)
+            else 'no comission'
+            end as appropriately
+            from employees;
+
+/*AGT.7*/   select first_name,salary,
+            case
+            when comission>0 then
+            cast(comission*2 as varchar)
+            else 'no comission' 
+            end as appropriately
+            from employees;
+
+/*AGT.9*/   select sum(salary) from employees as Total_Manager_Salary 
+            where job_id=2 or job_id=7 or job_id=10 or job_id=14 or job_id=15 or job_id=19;
+		  
+
+
+/*AGT.12*/   select department_id, AVG(salary) as Average_Employee_Salary from employees
+             group by department_id
+             order by department_id ;
+
+/*AGT.13*/   select department_id ,MAX(salary) as Maximum_salary_of_each_department from employees
+	     group by department_id;
+
+/*AGT.14*/   select first_name,salary,
+             case
+             when comission is not null then
+            (salary+(salary*10/100))
+             else '1'
+             end as Comission
+             from employees;
+
+
